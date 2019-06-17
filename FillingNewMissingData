@@ -1,0 +1,22 @@
+import pandas as pd
+
+
+df = pd.read_csv("wholedata.csv", parse_dates=['fulldate'])
+
+
+df.index = df['fulldate']
+
+input_labels = ('','Wind Speed', 'Wind Direction', 'Snowfall Amount')
+df['external_temp'] = df['external_temp'].replace(0, df['external_temp'].mean())
+df['external_humidity'] = df['external_humidity'].replace(0, df['external_humidity'].mean())
+df['Total Precipitation'] = df['Total Precipitation'].replace(0, df['Total Precipitation'].mean())
+df['Total Cloud Cover'] = df['Total Cloud Cover'].replace(0, df['Total Cloud Cover'].mean())
+df['Shortwave Radiation'] = df['Shortwave Radiation'].replace(0, df['Shortwave Radiation'].mean())
+df['Wind Speed'] = df['Wind Speed'].replace(0, df['Wind Speed'].mean())
+df['Wind Direction'] = df['Wind Direction'].replace(0, df['Wind Direction'].mean())
+df['Snowfall Amount'] = df['Snowfall Amount'].replace(0, df['Snowfall Amount'].mean())
+
+
+print(df['Snowfall Amount'].describe())
+
+
